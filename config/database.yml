@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: phase4_project_development
+  database: phase4_review_project
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: phase4_project_production
+  database: phase4_review_project
   username: phase4_project
   password: <%= ENV["PHASE4_PROJECT_DATABASE_PASSWORD"] %>
