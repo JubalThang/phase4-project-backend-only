@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+    skip_before_action :comfirm_authentication, only: [:index]
+
     def index 
         render json: Post.all.order(created_at: :desc)
     end

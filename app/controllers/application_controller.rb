@@ -5,11 +5,12 @@ class ApplicationController < ActionController::API
 
     rescue_from ActiveRecord::RecordInvalid, with: :handle_unprocessable_entity 
 
+    before_action :comfirm_authentication
 
     private 
 
     def current_user 
-        User.find_by_id(session[:u_id])
+        @current_user ||= User.find_by(id: session[:user_id])
     end
 
     def render_not_found(error)
@@ -20,4 +21,7 @@ class ApplicationController < ActionController::API
         render json: {error: valid.record.errors}, status: :unprocessable_entity
     end
 
+    def comfirm_authentication 
+        render json: {error: "You must be logged in!"}, status: :unauthorized unless session.include? :user_id
+    end
 end

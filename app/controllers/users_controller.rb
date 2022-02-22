@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+
+    skip_before_action :comfirm_authentication, only: [:create]
     # /profile or /me
     def show
         if current_user
