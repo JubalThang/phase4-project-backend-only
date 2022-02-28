@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
  
-      resources :posts, only: [:show, :create]
+      resources :posts, only: [:show, :create, :destroy]
+
+      patch '/posts/:id/likes', to: "posts#increment_likes"
     
       get '/me', to: 'users#show'
       get '/home', to: 'posts#index'
