@@ -32,7 +32,7 @@ class PostsController < ApplicationController
             render json: {error: "Only the post owner can perform this action"}, status: :unauthorized
            end
         else
-            render json: {error: 'Noauthorized'}, status: :unprocessable_entity
+            render json: {error: 'Only the post owner can perform this action'}, status: :unprocessable_entity
         end
         # if current_user.id == params[:id] 
         #     byebug
